@@ -8,9 +8,10 @@ public class CheckMemory : MonoBehaviour
 {
     [SerializeField] GridLayoutGroup Log;
     [SerializeField] GridLayoutGroup Kakao;
+    [SerializeField] GameObject MessagePrefab;
 
     private void Start()
     {
-        
+
     }
 }

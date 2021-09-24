@@ -5,9 +5,10 @@ using UnityEngine;
 public class ScenePictureShower_Presentation : MonoBehaviour
 {
 
-    [SerializeField] List<SCO_ChangeThingsInfo> _changeThingsInfos = new List<SCO_ChangeThingsInfo>();
-    public List<SCO_ChangeThingsInfo> ChangeThingsInfos => _changeThingsInfos;
-    
+    [SerializeField] List<ChangeThingInfoStr> _changeThingsInfos = new List<ChangeThingInfoStr>();
+    public List<ChangeThingInfoStr> ChangeThingsInfos => _changeThingsInfos;
+
+    [SerializeField] int _aDayForVisitingPlace;
     [SerializeField] float _origineTime = 24f;
     [SerializeField] float _innerTimeForAllPicture = 0f;
     [SerializeField] float _innerTimeForAnPicture = 0f;
@@ -18,31 +19,37 @@ public class ScenePictureShower_Presentation : MonoBehaviour
     #region Methoud
 
     // Show An Picture
+    void PresentationShowing()
+    {
+        Instantiate(_pictures[Random.Range(0, _pictures.Length)]);
+    }
 
     // Set The Picture for change Things
+    // do that in Picture.
 
     // get the ChangeThingsInfo
+    // do that in Picture.
 
     // Check the Time
 
+
     // If the time isn't yet, Wait.
 
+
     // If the time done, Show An Picture
+
 
     // If the time for 
 
 
-    void PresentationShowing()
-    {
 
-    }
     #endregion
 
 
 
     #region Interfaces
 
-    public void AddChangeThingsInfo(SCO_ChangeThingsInfo info) => _changeThingsInfos.Add(info);
+    public void AddChangeThingsInfo(ChangeThingInfoStr info) => _changeThingsInfos.Add(info);
 
     #endregion
 

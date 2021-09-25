@@ -6,7 +6,7 @@ using TMPro;
 
 public class Chatting : MonoBehaviour
 {
-    [SerializeField] RectTransform Content;
+    public RectTransform Content;
     [SerializeField] Scrollbar Scrollbar;
     [SerializeField] GameObject ChatPrefab;
     [SerializeField] Sprite Me;
@@ -14,11 +14,10 @@ public class Chatting : MonoBehaviour
 
     Coroutine CSetValueLerp;
 
+    public Stack<GameObject> MessageStack = new Stack<GameObject>();
+
     void Update()
     {
-        var glg = Content.GetComponent<GridLayoutGroup>();
-        Content.sizeDelta = new Vector2(Content.sizeDelta.x, (glg.cellSize.y + glg.spacing.y) * Content.childCount + 25);
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Chat("text", true);
@@ -52,8 +51,13 @@ public class Chatting : MonoBehaviour
             text.alignment = TextAlignmentOptions.Left;
         }
 
-        Invoke(nameof(SetZero), 1);
+        Invoke(nameof(SetZero), 0.1f);
+
+        var glg = Content.GetComponent<GridLayoutGroup>();
+        Content.sizeDelta = new Vector2(Content.sizeDelta.x, (glg.cellSize.y + glg.spacing.y) * Content.childCount + 25);
+
+        MessageStack.Push(obj);
     }
 
-    void SetZero() => Scrollbar.value = 0;
+    public void SetZero() => Scrollbar.value = 0;
 }

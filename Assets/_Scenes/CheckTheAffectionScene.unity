@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c214053366b64142b052e42683131ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roadRoopScene: PicturePresentating
+  _loadLoopScene: PicturePresentating
   _maximumDays: 0
   _affectionMinimum: 30
   _affectionMidle: 70

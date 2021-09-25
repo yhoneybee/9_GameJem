@@ -155,7 +155,12 @@ MonoBehaviour:
   _BGMS:
   - {fileID: 11400000, guid: a9eaf05578bc6f246892fb25aca69f3b, type: 2}
   - {fileID: 11400000, guid: 08ff5958aedd97542a0b06245a03fa0a, type: 2}
-  _clipPackA: []
+  - {fileID: 11400000, guid: ec1748daa19680949905e27ec36aa173, type: 2}
+  - {fileID: 11400000, guid: f6dc2373a7789614f88f968942625675, type: 2}
+  - {fileID: 11400000, guid: 205fb9ca9a1a34e4886121c6ea710648, type: 2}
+  - {fileID: 11400000, guid: c4bd710ead9c8624e91745915b181add, type: 2}
+  _clipPackA:
+  - {fileID: 11400000, guid: 135ff651dfd912243a8306fdb5668c85, type: 2}
   _test: 0
   _initialization: 0
   _testName: 
@@ -229,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc0d6b72e3bae54ebec7cfa05864729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstLoadScene: IngameScene
+  _firstLoadScene: LobbyScene
   _secondLoadScene: 
   _test: 0
   _loadSceneTestString: 
@@ -271,6 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _numberOfDay: 0
+  _endingNumber: 0
 --- !u!4 &1217722173
 Transform:
   m_ObjectHideFlags: 0
@@ -314,7 +320,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b686c579cf39604283ac034df573d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  affection: 0
 --- !u!4 &2004788664
 Transform:
   m_ObjectHideFlags: 0

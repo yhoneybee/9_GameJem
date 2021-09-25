@@ -215,7 +215,6 @@ public class CheckMemory : MonoBehaviour
     private void Start()
     {
         State = State.WAIT;
-        StartCheckMemory();
         question_count = ListContainer.LC.PresentationResult.Count;
         max_q_idx = question_count;
     }

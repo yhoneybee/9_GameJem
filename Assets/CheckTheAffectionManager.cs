@@ -47,9 +47,10 @@ public class CheckTheAffectionManager : MonoBehaviour
                 LoadSceneForShowEnding();
             }
         }
-
-
-
+        else
+        {
+            LoadSceneForLoof();
+        }
     }
 
     void LoadGameOverScene()

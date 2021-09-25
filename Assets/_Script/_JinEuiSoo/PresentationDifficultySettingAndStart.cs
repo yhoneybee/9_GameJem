@@ -10,6 +10,8 @@ public class PresentationDifficultySettingAndStart : MonoBehaviour
     [SerializeField] int _difficulty;
     [SerializeField] SCO_DifficultControlOption[] _difficultyOption;
 
+    [SerializeField] float _timeWaitForTransition = 1.0f;
+
     ScenePictureShower_Presentation _scenePictureShower;
 
     private void Update()
@@ -17,11 +19,17 @@ public class PresentationDifficultySettingAndStart : MonoBehaviour
         if(_test)
         {
             _test = false;
-            PresentationSceneStart();
+            StartCoroutine(TimeWaitForTransition());
         }
     }
 
-    public void PresentationSceneStart()
+    IEnumerator TimeWaitForTransition()
+    {
+        yield return new WaitForSeconds(_timeWaitForTransition);
+        PresentationSceneStart();
+    }
+
+    void PresentationSceneStart()
     {
         _scenePictureShower = _presentationGo.GetComponent<ScenePictureShower_Presentation>();
         _scenePictureShower.SetDifficultyByAnotherClass(_difficultyOption[_difficulty]);

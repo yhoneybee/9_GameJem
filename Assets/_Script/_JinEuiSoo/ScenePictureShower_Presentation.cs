@@ -94,15 +94,15 @@ public class ScenePictureShower_Presentation : MonoBehaviour
         _badGirlActiveChance = difficultOption.ChanceForBadGirlActive;
     }
 
-    public void PicturePresentationStart()
-    {
-        _origineTime = _datingTime;
-        PictureShowingEventFirstStart();
-    }
-
     public void PicturePresentationTestStart(float datingTime)
     {
         _origineTime = datingTime;
+        PictureShowingEventFirstStart();
+    }
+
+    public void PicturePresentationStart()
+    {
+        _origineTime = _datingTime;
         PictureShowingEventFirstStart();
     }
 

@@ -698,6 +698,7 @@ MonoBehaviour:
   _difficulty: 0
   _difficultyOption:
   - {fileID: 11400000, guid: 5108aa4a35c7c6f4289fda9d8a633fa0, type: 2}
+  _timeWaitForTransition: 1
 --- !u!4 &755494882
 Transform:
   m_ObjectHideFlags: 0

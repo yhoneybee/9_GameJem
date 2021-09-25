@@ -278,7 +278,7 @@ public class SoundManager : MonoBehaviour
         _currentBGMNumber++;
         if (_currentBGMNumber >= _howManyUseBGMSoundObjects)
             _currentBGMNumber = 0;
-        _BGMSoundObjectsPool[_currentClipNumber].SetActive(true);
+        _BGMSoundObjectsPool[_currentBGMNumber].SetActive(true);
         return _BGMSoundObjectsPool[_currentBGMNumber];
     }
 

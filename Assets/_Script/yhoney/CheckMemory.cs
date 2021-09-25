@@ -223,7 +223,7 @@ public class CheckMemory : MonoBehaviour
                 if (!isA)
                 {
                     Chatting.MessageStack.Peek().GetComponentInChildren<TextMeshProUGUI>().text = ".....";
-                    GameManager.Instance.affection -= 10;
+                    GameManager.Instance.Affection -= 10;
                     StartCoroutine(EDelay(new System.Tuple<string, bool>(Negative[Random.Range(0, 4)], false)));
                 }
 
@@ -311,7 +311,7 @@ public class CheckMemory : MonoBehaviour
                 StartCoroutine(EDelay(new System.Tuple<string, bool>(Positive[rand], false)));
             else
             {
-                GameManager.Instance.affection -= 10;
+                GameManager.Instance.Affection -= 10;
                 StartCoroutine(EDelay(new System.Tuple<string, bool>(Negative[rand], false)));
             }
 

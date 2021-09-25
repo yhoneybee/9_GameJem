@@ -11,5 +11,17 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
-    public int affection;
+    private int affection;
+    public int Affection
+    {
+        get { return affection; }
+        set
+        { 
+            affection = value;
+            if (value <= 0)
+            {
+                Debug.LogWarning("¾ÖÁ¤µµ was ZERO!!!!!!!!!!!!!!!!!!");
+            }
+        }
+    }
 }

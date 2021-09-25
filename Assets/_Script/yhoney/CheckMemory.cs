@@ -119,7 +119,14 @@ public class CheckMemory : MonoBehaviour
                     StartCoroutine(EDelay(new System.Tuple<string, bool>[] { new System.Tuple<string, bool>(Greetings[rand][0], false), new System.Tuple<string, bool>(Greetings[rand][1], true) }));
                     break;
                 case State.QUESTION:
-                    Question(Questions[ListContainer.LC.PresentationResult[Mathf.Abs(question_count - ListContainer.LC.PresentationResult.Count)].PlaceAndActionStringArr[0]][Random.Range(0, 3)], Choice[ListContainer.LC.PresentationResult[Mathf.Abs(question_count - ListContainer.LC.PresentationResult.Count)].PlaceAndActionStringArr[0]]);
+                    isA = false;
+                    if (q_idx == ListContainer.LC.PresentationResult.Count)
+                    {
+                        State = State.END;
+                        break;
+                    }
+                    string str = ListContainer.LC.PresentationResult[q_idx].PlaceAndActionStringArr[0];
+                    Question(Questions[str][Random.Range(0, 3)], Choice[str]);
                     break;
                 case State.ANSWER:
                     break;
@@ -194,6 +201,8 @@ public class CheckMemory : MonoBehaviour
     int q_idx = 0;
     int max_q_idx = 0;
 
+    bool isA = false;
+
     private void Start()
     {
         State = State.GREETING;
@@ -208,6 +217,7 @@ public class CheckMemory : MonoBehaviour
             if (LeftTime > 5)
             {
                 // TODO : Fail
+                if (!isA) StartCoroutine(EDelay(new System.Tuple<string, bool>(Negative[Random.Range(0, 4)], false)));
                 IsTimer = false;
                 HideQ();
                 State = State.QUESTION;
@@ -280,8 +290,8 @@ public class CheckMemory : MonoBehaviour
 
             int rand = Random.Range(0, 4);
 
-            string visit = ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[0];
-            string action = ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[2];
+            string visit = ListContainer.LC.PresentationResult[q_idx].PlaceAndActionStringArr[0];
+            string action = ListContainer.LC.PresentationResult[q_idx].PlaceAndActionStringArr[2];
 
             if (Choice[visit][index] == action)
                 StartCoroutine(EDelay(new System.Tuple<string, bool>(Positive[rand], false)));
@@ -295,6 +305,8 @@ public class CheckMemory : MonoBehaviour
             ++q_idx;
             Chatting.MessageStack.Peek().GetComponentInChildren<TextMeshProUGUI>().text = GetString(place, Choice[place][index]);
             State = State.ANSWER;
+
+            isA = true;
         }
     }
 

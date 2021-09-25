@@ -6,6 +6,7 @@ using TMPro;
 
 public enum State
 {
+    WAIT,
     GREETING,
     QUESTION,
     ANSWER,
@@ -102,8 +103,9 @@ public class CheckMemory : MonoBehaviour
         return result;
     }
 
-    private State state;
+    public void StartCheckMemory() => State = State.GREETING;
 
+    private State state = State.WAIT;
     public State State
     {
         get { return state; }
@@ -115,6 +117,8 @@ public class CheckMemory : MonoBehaviour
 
             switch (State)
             {
+                case State.WAIT:
+                    break;
                 case State.GREETING:
                     StartCoroutine(EDelay(new System.Tuple<string, bool>[] { new System.Tuple<string, bool>(Greetings[rand][0], false), new System.Tuple<string, bool>(Greetings[rand][1], true) }));
                     break;
@@ -210,7 +214,7 @@ public class CheckMemory : MonoBehaviour
 
     private void Start()
     {
-        State = State.GREETING;
+        State = State.WAIT;
         question_count = ListContainer.LC.PresentationResult.Count;
         max_q_idx = question_count;
     }
@@ -240,6 +244,8 @@ public class CheckMemory : MonoBehaviour
     public void NextMemo()
     {
         // TODO : 여기서 Presentation에 접근해서 갱신 메모가 없다면 Text 비움
+
+        if (State == State.WAIT) return;
 
         if (memo_idx == ListContainer.LC.PresentationResult.Count)
         {

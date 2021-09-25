@@ -40,6 +40,8 @@ public class Chatting : MonoBehaviour
         //if (send) img.sprite = Me;
         //else img.sprite = You;
 
+        SoundManager.SM.RequestPlayClip("Ä«Åå¼Ò¸®");
+
         if (send)
         {
             img.color = Color.yellow;

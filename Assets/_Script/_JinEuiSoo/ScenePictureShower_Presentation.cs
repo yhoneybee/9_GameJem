@@ -109,6 +109,8 @@ public class ScenePictureShower_Presentation : MonoBehaviour
     // First Action
     void PictureShowingEventFirstStart()
     {
+
+        ListContainer.LC.ClearPresentationResultList();
         // Initialize for Presentation
         _orderOfVisiting = 0;
         _pictureShowingTime = _origineTime / _visitingPlaceInADay;
@@ -227,7 +229,7 @@ public class ScenePictureShower_Presentation : MonoBehaviour
 
         _changeThingsInfos.Clear();
 
-        ListContainer.LC.ClearPresentationResultList();
+
 
         SceneMananagementClass.SMC.LoadSceneAsSync("CheckMemory");
         SceneMananagementClass.SMC.UnLoadSceneAsSync("PicturePresentating");

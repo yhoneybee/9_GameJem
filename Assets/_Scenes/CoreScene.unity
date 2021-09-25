@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc0d6b72e3bae54ebec7cfa05864729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstLoadScene: PicturePresentating
+  _firstLoadScene: LobbyScene
   _secondLoadScene: 
   _test: 0
   _loadSceneTestString: 

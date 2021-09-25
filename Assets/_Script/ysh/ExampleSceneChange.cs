@@ -8,7 +8,8 @@ public class ExampleSceneChange : MonoBehaviour
     public void SceneChangeButton(string sceneName)
     {
         Debug.Log(sceneName + " Load.");
-        SceneManager.LoadScene(sceneName);
+        SceneMananagementClass.SMC.LoadSceneAsSync(sceneName);
+        SceneMananagementClass.SMC.UnLoadSceneAsSync("LobbyScene");
     }
 
     public void QuitGame()
@@ -19,13 +20,10 @@ public class ExampleSceneChange : MonoBehaviour
 
     void Update()
     {
-        if(SceneManager.GetActiveScene().name == "IngameScene")
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Debug.Log("Game Over.");
-                SceneManager.LoadScene("EndScene");
-            }
+            SceneMananagementClass.SMC.LoadSceneAsSync("PicturePresentating");
+            SceneMananagementClass.SMC.UnLoadSceneAsSync("IngameScene");
         }
     }
 }

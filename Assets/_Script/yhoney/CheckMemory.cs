@@ -156,6 +156,7 @@ public class CheckMemory : MonoBehaviour
             case State.QUESTION:
                 break;
             case State.END:
+                print("fjkdlfd");
                 SceneMananagementClass.SMC.LoadSceneAsSync("CheckTheAffectionScene");
                 SceneMananagementClass.SMC.UnLoadSceneAsSync("CheckMemory");
                 break;

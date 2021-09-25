@@ -60,4 +60,5 @@ public class ListContainer : MonoBehaviour
     public void AddNumberOfDay(int number) => _numberOfDay += number;
     public int GetNumberOfDay() => _numberOfDay;
     public void SetToZeroNumberOfDay() => _numberOfDay = 0;
+    public void ClearPresentationResultList() => _presentationResult.Clear();
 }

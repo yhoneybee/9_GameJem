@@ -191,11 +191,14 @@ public class CheckMemory : MonoBehaviour
     }
 
     int memo_idx = 0;
+    int q_idx = 0;
+    int max_q_idx = 0;
 
     private void Start()
     {
         State = State.GREETING;
         question_count = ListContainer.LC.PresentationResult.Count;
+        max_q_idx = question_count;
     }
     private void Update()
     {
@@ -217,8 +220,8 @@ public class CheckMemory : MonoBehaviour
         // TODO : 여기서 Presentation에 접근해서 갱신 메모가 없다면 Text 비움
 
         bool check = ListContainer.LC.PresentationResult[memo_idx].IsModifedByBadGirl;
-        string visit = ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[check ? 2 : 0];
-        string action = ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[check ? 3 : 1];
+        string visit = ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[check ? 1 : 0];
+        string action = ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[check ? 3 : 2];
 
         int year = 2021, month = 1, day = 1;
         Date.text = $"{year} / {month} / {day}";
@@ -278,7 +281,7 @@ public class CheckMemory : MonoBehaviour
             int rand = Random.Range(0, 4);
 
             string visit = ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[0];
-            string action = ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[1];
+            string action = ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[2];
 
             if (Choice[visit][index] == action)
                 StartCoroutine(EDelay(new System.Tuple<string, bool>(Positive[rand], false)));
@@ -287,7 +290,10 @@ public class CheckMemory : MonoBehaviour
 
             //StartCoroutine(EDelay(new System.Tuple<string, bool>(Negative[rand], false)));
 
-            Chatting.MessageStack.Peek().GetComponentInChildren<TextMeshProUGUI>().text = GetString(ListContainer.LC.PresentationResult[Mathf.Abs(question_count - ListContainer.LC.PresentationResult.Count)].PlaceAndActionStringArr[0], Choice[ListContainer.LC.PresentationResult[Mathf.Abs(question_count - ListContainer.LC.PresentationResult.Count)].PlaceAndActionStringArr[0]][index]);
+
+            string place = ListContainer.LC.PresentationResult[q_idx].PlaceAndActionStringArr[0];
+            ++q_idx;
+            Chatting.MessageStack.Peek().GetComponentInChildren<TextMeshProUGUI>().text = GetString(place, Choice[place][index]);
             State = State.ANSWER;
         }
     }

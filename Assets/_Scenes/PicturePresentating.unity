@@ -185,6 +185,31 @@ MonoBehaviour:
   - "\uAF43\uC9D1"
   - "\uC624\uB77D\uC2E4"
   - "\uC545\uC138\uC0AC\uB9AC\uC810"
+  _actionNames:
+  - "\uD638\uB7EC"
+  - "\uC560\uB2C8\uBA54\uC774\uC158"
+  - "\uB808\uC774\uC2F1"
+  - "\uD310\uD0C0\uC9C0"
+  - "\uD30C\uC2A4\uD0C0"
+  - "\uC2A4\uD14C\uC774\uD06C"
+  - "\uC2A4\uD29C"
+  - "\uBE75"
+  - "\uACE0\uC591\uC774"
+  - "\uAC1C"
+  - "\uB2ED"
+  - "\uB3FC\uC9C0"
+  - "\uD770\uC0C9"
+  - "\uBE68\uAC04\uC0C9"
+  - "\uB178\uB780\uC0C9"
+  - "\uD30C\uB780\uC0C9"
+  - "\uC720\uB839"
+  - "\uC880\uBE44"
+  - "\uC624\uD06C"
+  - "\uAC15\uC544\uC9C0 \uC218\uC778"
+  - "\uC2ED\uC790\uAC00"
+  - "\uBD88\uAF43"
+  - "\uBB3C\uBC29\uC6B8"
+  - "\uD574\uACE8"
   _UI_clock: {fileID: 744663378}
   _innerTimeForAllPictureTimeDecreasing: 0
   _innerTimeForAnPictureTimeDecreasing: 0
@@ -668,7 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4d72635c009bc4db2ae45913d30161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _test: 0
+  _test: 1
   _presentationGo: {fileID: 1283977}
   _difficulty: 0
   _difficultyOption:

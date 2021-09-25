@@ -104,6 +104,7 @@ public class SceneMananagementClass : MonoBehaviour
             case "CheckMemory":
                 SoundManager.SM.RequestPlayBGM(_messageCheckingScene.name);
                 ListContainer.LC.AddNumberOfDay(1);
+                // GameObject.Find("CheckMemory").GetComponent<CheckMemory>();
                 break;
             case "CheckTheAffectionScene":
                 break;

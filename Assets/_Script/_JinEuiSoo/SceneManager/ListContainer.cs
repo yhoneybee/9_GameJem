@@ -6,6 +6,8 @@ public class ListContainer : MonoBehaviour
 {
     private static ListContainer _listContainer;
 
+    [SerializeField] int _numberOfDay = 0;
+
     /// <summary>
     /// ListContainer
     /// </summary>
@@ -49,9 +51,13 @@ public class ListContainer : MonoBehaviour
 
     public void AddPresentationResult(ChangeThingInfoStr[] results)
     {
-        foreach(ChangeThingInfoStr tempString in results)
+        foreach (ChangeThingInfoStr tempString in results)
         {
             _presentationResult.Add(tempString);
         }
     }
+
+    public void AddNumberOfDay(int number) => _numberOfDay += number;
+    public int GetNumberOfDay() => _numberOfDay;
+    public void SetToZeroNumberOfDay() => _numberOfDay = 0;
 }

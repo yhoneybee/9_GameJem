@@ -91,15 +91,18 @@ public class SceneMananagementClass : MonoBehaviour
             default:
             case "LobbyScene":
                 SoundManager.SM.RequestPlayBGM(_lobbyScene.name);
+                ListContainer.LC.SetToZeroNumberOfDay();
                 break;
             case "IngameScene":
                 SoundManager.SM.RequestPlayBGM(_ImageScene.name);
                 break;
             case "PicturePresentating":
                 SoundManager.SM.RequestPlayBGM(_presentationScene.name);
+                ListContainer.LC.AddNumberOfDay(1);
                 break;
             case "CheckMemory":
                 SoundManager.SM.RequestPlayBGM(_messageCheckingScene.name);
+                ListContainer.LC.AddNumberOfDay(1);
                 break;
         }
     }

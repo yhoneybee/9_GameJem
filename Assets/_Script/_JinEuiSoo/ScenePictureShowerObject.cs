@@ -47,6 +47,7 @@ public class ScenePictureShowerObject : MonoBehaviour
         tempThingInfo.PlaceAndActionStringArr[2] = rightMenu;
         tempThingInfo.PlaceAndActionStringArr[3] = _changeAblesThings[Random.Range(0, _changeAblesThings.Length)].name;
         tempThingInfo.OrderOfVisitingPlace = _presentation.OrderOfVisiting;
+        tempThingInfo.NumberOfDay = ListContainer.LC.GetNumberOfDay();
 
 
         // Wrong Place name correction. .. If the name is same as right place, wrong place name change to another place name.
@@ -57,6 +58,18 @@ public class ScenePictureShowerObject : MonoBehaviour
                 tempThingInfo.PlaceAndActionStringArr[1] = _presentation.PlaceNames[Random.Range(0, _presentation.PlaceNames.Length)];
 
                 if (tempThingInfo.PlaceAndActionStringArr[0] != tempThingInfo.PlaceAndActionStringArr[1])
+                    break;
+            }
+        }
+
+        // Wrong Action name correction. .. 
+        if (tempThingInfo.PlaceAndActionStringArr[2] == tempThingInfo.PlaceAndActionStringArr[3])
+        {
+            for (int a = 0; a < 100; a++)
+            {
+                tempThingInfo.PlaceAndActionStringArr[3] = _presentation.ActionNames[Random.Range(0, _presentation.ActionNames.Length)];
+
+                if (tempThingInfo.PlaceAndActionStringArr[2] != tempThingInfo.PlaceAndActionStringArr[3])
                     break;
             }
         }

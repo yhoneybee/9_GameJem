@@ -21,6 +21,9 @@ public class ScenePictureShower_Presentation : MonoBehaviour
     [SerializeField] string[] _placeNames;
     public string[] PlaceNames => _placeNames;
 
+    [SerializeField] string[] _actionNames;
+    public string[] ActionNames => _actionNames;
+
     #endregion
 
     [Header("UIs")]
@@ -191,6 +194,7 @@ public class ScenePictureShower_Presentation : MonoBehaviour
         _innerTimeForAnPictureTimeDecreasing = false;
         _innerTimeForAllPicture = 0f;
         _innerTimeForAnPicture = 0f;
+        _orderOfVisiting = 0;
 
         try
         {
@@ -206,9 +210,10 @@ public class ScenePictureShower_Presentation : MonoBehaviour
 
         foreach(ChangeThingInfoStr thing in _changeThingsInfos)
         {
+            Debug.Log($"오늘은 몇번째 날? : {thing.NumberOfDay}, 몇 번째로 간 장소? : {thing.OrderOfVisitingPlace}");
             Debug.Log($"나쁜년이 활동 했나요? : {((thing.IsModifedByBadGirl) ? true : false)}");
-            Debug.Log($"실제간곳 : {thing.PlaceAndActionStringArr[0]}, 실제먹은음식 : {thing.PlaceAndActionStringArr[2]}");
-            Debug.Log($"잘못간 곳 : {thing.PlaceAndActionStringArr[1]}, 잘못된 먹은 음식 : {thing.PlaceAndActionStringArr[3]}");
+            Debug.Log($"실제 장소 : {thing.PlaceAndActionStringArr[0]}, 실제 행동 : {thing.PlaceAndActionStringArr[2]}");
+            Debug.Log($"잘못된 장소 : {thing.PlaceAndActionStringArr[1]}, 잘못된 행동 : {thing.PlaceAndActionStringArr[3]}");
         }
 
         ChangeThingInfoStr[] tempStringResult;

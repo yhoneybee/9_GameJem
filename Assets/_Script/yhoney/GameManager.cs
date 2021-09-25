@@ -11,5 +11,5 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
-    public int affection;
+    public int affection = 100;
 }

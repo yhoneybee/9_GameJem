@@ -8,6 +8,7 @@ public class ListContainer : MonoBehaviour
 
     [SerializeField] int _numberOfDay = 0;
     [SerializeField] int _endingNumber = 0;
+
     public int EndingNumber
     {
         get => _endingNumber;
@@ -53,6 +54,11 @@ public class ListContainer : MonoBehaviour
             return;
         }
         #endregion
+    }
+
+    private void Update()
+    {
+
     }
 
     public void AddPresentationResult(ChangeThingInfoStr[] results)

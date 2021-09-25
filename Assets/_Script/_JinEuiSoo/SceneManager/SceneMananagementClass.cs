@@ -150,7 +150,6 @@ public class SceneMananagementClass : MonoBehaviour
 
     void SetSpritRendereAlpha(float alpha)
     {
-        Debug.Log("Alpha : " + alpha);
         if(alpha == float.NaN)
         {
             alpha = 1f;

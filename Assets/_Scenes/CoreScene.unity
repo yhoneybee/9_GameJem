@@ -237,6 +237,7 @@ MonoBehaviour:
   _ImageScene: {fileID: 11400000, guid: 08ff5958aedd97542a0b06245a03fa0a, type: 2}
   _presentationScene: {fileID: 11400000, guid: a9eaf05578bc6f246892fb25aca69f3b, type: 2}
   _messageCheckingScene: {fileID: 11400000, guid: 08ff5958aedd97542a0b06245a03fa0a, type: 2}
+  _checkTheAffectionScene: {fileID: 11400000, guid: a9eaf05578bc6f246892fb25aca69f3b, type: 2}
   _endingBadScene: {fileID: 0}
   _endingModerateScene: {fileID: 0}
   _endingGoodScene: {fileID: 0}

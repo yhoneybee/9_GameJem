@@ -15,6 +15,7 @@ public class SceneMananagementClass : MonoBehaviour
     [SerializeField] AudioStorage _ImageScene;
     [SerializeField] AudioStorage _presentationScene;
     [SerializeField] AudioStorage _messageCheckingScene;
+    [SerializeField] AudioStorage _checkTheAffectionScene;
     [SerializeField] AudioStorage _endingBadScene;
     [SerializeField] AudioStorage _endingModerateScene;
     [SerializeField] AudioStorage _endingGoodScene;
@@ -103,6 +104,8 @@ public class SceneMananagementClass : MonoBehaviour
             case "CheckMemory":
                 SoundManager.SM.RequestPlayBGM(_messageCheckingScene.name);
                 ListContainer.LC.AddNumberOfDay(1);
+                break;
+            case "CheckTheAffectionScene":
                 break;
         }
     }

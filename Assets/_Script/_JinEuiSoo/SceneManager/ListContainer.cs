@@ -30,4 +30,20 @@ public class ListContainer : MonoBehaviour
             return _listContainer;
         }
     }
+
+    List<string> _presentationResult = new List<string>();
+    public List<string> PresentationResult => _presentationResult;
+
+    private void Awake()
+    {
+        #region Singleton Instantiate
+        var objs = FindObjectsOfType<ListContainer>();
+        if (objs.Length > 1)
+        {
+            Debug.LogError("New GameRullManager Added And Destroy Automatically");
+            Destroy(this.gameObject);
+            return;
+        }
+        #endregion
+    }
 }

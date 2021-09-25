@@ -55,7 +55,7 @@ public class Chatting : MonoBehaviour
             text.alignment = TextAlignmentOptions.Left;
         }
 
-        Invoke(nameof(SetZero), 0.1f);
+        SetZero();
 
         var glg = Content.GetComponent<GridLayoutGroup>();
         Content.sizeDelta = new Vector2(Content.sizeDelta.x, (glg.cellSize.y + glg.spacing.y) * Content.childCount + 25);
@@ -63,5 +63,10 @@ public class Chatting : MonoBehaviour
         if (send) MessageStack.Push(obj);
     }
 
-    public void SetZero() => Scrollbar.value = 0;
+    void InvokeZero() => Scrollbar.value = 0;
+
+    public void SetZero()
+    {
+        Invoke(nameof(InvokeZero), 0.1f);
+    }
 }

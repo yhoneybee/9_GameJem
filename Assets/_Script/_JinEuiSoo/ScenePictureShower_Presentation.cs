@@ -63,7 +63,7 @@ public class ScenePictureShower_Presentation : MonoBehaviour
         if(_test)
         {
             _test = false;
-            SoundManager.SM.RequestPlayBGM(_testBGM);
+            SoundManager.SM.RequestPlayBGM(_testBGM, true);
             // PicturePresentationTestStart(_datingTime);
         }
         TimeCheckings();

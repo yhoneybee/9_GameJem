@@ -19,19 +19,19 @@ public class EndingTotalManager : MonoBehaviour
         {
             default:
             case 0:
-                SoundManager.SM.RequestPlayBGM(audioStorages[0].name);
+                SoundManager.SM.RequestPlayBGM(audioStorages[0].name, true);
                 _endingCutScenes[0].SetActive(true);
                 break;
             case 1:
-                SoundManager.SM.RequestPlayBGM(audioStorages[1].name);
+                SoundManager.SM.RequestPlayBGM(audioStorages[1].name, true);
                 _endingCutScenes[1].SetActive(true);
                 break;
             case 2:
-                SoundManager.SM.RequestPlayBGM(audioStorages[2].name);
+                SoundManager.SM.RequestPlayBGM(audioStorages[2].name, true);
                 _endingCutScenes[2].SetActive(true);
                 break;
             case 3:
-                SoundManager.SM.RequestPlayBGM(audioStorages[3].name);
+                SoundManager.SM.RequestPlayBGM(audioStorages[3].name, true);
                 _endingCutScenes[3].SetActive(true);
                 break;
         }

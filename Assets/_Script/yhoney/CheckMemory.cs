@@ -217,7 +217,12 @@ public class CheckMemory : MonoBehaviour
             if (LeftTime > 5)
             {
                 // TODO : Fail
-                if (!isA) StartCoroutine(EDelay(new System.Tuple<string, bool>(Negative[Random.Range(0, 4)], false)));
+                if (!isA)
+                {
+                    Chatting.MessageStack.Peek().GetComponentInChildren<TextMeshProUGUI>().text = ".....";
+                    StartCoroutine(EDelay(new System.Tuple<string, bool>(Negative[Random.Range(0, 4)], false)));
+                }
+
                 IsTimer = false;
                 HideQ();
                 State = State.QUESTION;
@@ -229,12 +234,17 @@ public class CheckMemory : MonoBehaviour
     {
         // TODO : 여기서 Presentation에 접근해서 갱신 메모가 없다면 Text 비움
 
+        if (memo_idx == ListContainer.LC.PresentationResult.Count)
+        {
+            Content.text = "";
+            return;
+        }
+
         bool check = ListContainer.LC.PresentationResult[memo_idx].IsModifedByBadGirl;
         string visit = ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[check ? 1 : 0];
         string action = ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[check ? 3 : 2];
 
-        int year = 2021, month = 1, day = 1;
-        Date.text = $"{year} / {month} / {day}";
+        Date.text = $"{System.DateTime.Now.Year} / {System.DateTime.Now.Month} / {System.DateTime.Now.Day}";
 
         string memo = $"{visit}에서 {action}";
 

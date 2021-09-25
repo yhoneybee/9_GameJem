@@ -160,17 +160,16 @@ public class SoundManager : MonoBehaviour
                 }
             }
 
-            // 재생중인 BGM이 있다면, 그 BGM을 종료시키고, 다른 BGM을 실행하기 위해, 그 BGM을 리턴시킨다.
-            if(tempIsTransformFind == true)
-            {
-                ClipRequestReturnToPool(tempTransformFindPlayingChild);
-            }
-
             // 현재 BGM을 실행시킨다.
             GameObject tempGameObject = GetBGMFromPool();
             tempGameObject.SetActive(true);
             tempGameObject.GetComponent<BasicSoundClipPlay_Common>().SetInitialization(_BGMS[playMusicNumberInt]);
 
+            // 재생중인 BGM이 있다면, 그 BGM을 종료시키고, 다른 BGM을 실행하기 위해, 그 BGM을 리턴시킨다.
+            if(tempIsTransformFind == true)
+            {
+                ClipRequestReturnToPool(tempTransformFindPlayingChild);
+            }
             while(false)
             {
                 try

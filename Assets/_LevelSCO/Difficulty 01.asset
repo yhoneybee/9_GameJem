@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Difficulty 01
   m_EditorClassIdentifier: 
   _chanceForBadGirlActive: 0.5
-  _aTimeForDate: 24
+  _aTimeForDate: 10
   _aTimeForDateRandomRange: 0
   _visitingPlacesForDate: 3
   _visitingPlacesForDateRandomRange: 0

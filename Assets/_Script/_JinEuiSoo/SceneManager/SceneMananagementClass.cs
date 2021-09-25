@@ -11,6 +11,14 @@ public class SceneMananagementClass : MonoBehaviour
     [SerializeField] bool _test;
     [SerializeField] string _loadSceneTestString;
 
+    [SerializeField] AudioStorage _lobbyScene;
+    [SerializeField] AudioStorage _ImageScene;
+    [SerializeField] AudioStorage _presentationScene;
+    [SerializeField] AudioStorage _messageCheckingScene;
+    [SerializeField] AudioStorage _endingBadScene;
+    [SerializeField] AudioStorage _endingModerateScene;
+    [SerializeField] AudioStorage _endingGoodScene;
+
     private static SceneMananagementClass _sceneManagementClass;
 
     /// <summary>
@@ -73,5 +81,26 @@ public class SceneMananagementClass : MonoBehaviour
     public void LoadSceneAsSync(string sceneName)
     {
         SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        PlayAudioWeirdly(sceneName);
+    }
+
+    void PlayAudioWeirdly(string sceneName)
+    {
+        switch(sceneName)
+        {
+            default:
+            case "LobbyScene":
+                SoundManager.SM.RequestPlayBGM(_lobbyScene.name);
+                break;
+            case "IngameScene":
+                SoundManager.SM.RequestPlayBGM(_ImageScene.name);
+                break;
+            case "PicturePresentating":
+                SoundManager.SM.RequestPlayBGM(_presentationScene.name);
+                break;
+            case "CheckMemory":
+                SoundManager.SM.RequestPlayBGM(_messageCheckingScene.name);
+                break;
+        }
     }
 }

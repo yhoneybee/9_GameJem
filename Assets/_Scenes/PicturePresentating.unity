@@ -668,7 +668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4d72635c009bc4db2ae45913d30161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _test: 1
+  _test: 0
   _presentationGo: {fileID: 1283977}
   _difficulty: 0
   _difficultyOption:

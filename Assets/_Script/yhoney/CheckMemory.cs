@@ -119,7 +119,7 @@ public class CheckMemory : MonoBehaviour
                     StartCoroutine(EDelay(new System.Tuple<string, bool>[] { new System.Tuple<string, bool>(Greetings[rand][0], false), new System.Tuple<string, bool>(Greetings[rand][1], true) }));
                     break;
                 case State.QUESTION:
-                    Question(Questions["영화관"][Random.Range(0, 3)], Choice["영화관"]);
+                    Question(Questions[ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[0]][Random.Range(0, 3)], Choice[ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[0]]);
                     break;
                 case State.ANSWER:
                     break;
@@ -287,7 +287,7 @@ public class CheckMemory : MonoBehaviour
 
             //StartCoroutine(EDelay(new System.Tuple<string, bool>(Negative[rand], false)));
 
-            Chatting.MessageStack.Peek().GetComponentInChildren<TextMeshProUGUI>().text = GetString("영화관", Choice["영화관"][index]);
+            Chatting.MessageStack.Peek().GetComponentInChildren<TextMeshProUGUI>().text = GetString(ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[0], Choice[ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[0]][index]);
             State = State.ANSWER;
         }
     }

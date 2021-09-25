@@ -339,16 +339,16 @@ public class CheckMemory : MonoBehaviour
 
     public void HideQ()
     {
-        ScrollView.anchoredPosition = new Vector2(0, 0);
-        ScrollView.sizeDelta = new Vector2(ScrollView.sizeDelta.x, 1080);
+        ScrollView.anchoredPosition = new Vector2(0, -19.712f);
+        ScrollView.sizeDelta = new Vector2(ScrollView.sizeDelta.x, 840.58f);
         Chatting.SetZero();
         QuestionObj.gameObject.SetActive(false);
     }
 
     public void AppearQ()
     {
-        ScrollView.anchoredPosition = new Vector2(0, 211.75f);
-        ScrollView.sizeDelta = new Vector2(ScrollView.sizeDelta.x, 656.5f);
+        ScrollView.anchoredPosition = new Vector2(0, 172.63f);
+        ScrollView.sizeDelta = new Vector2(ScrollView.sizeDelta.x, 455.89f);
         Chatting.SetZero();
         QuestionObj.gameObject.SetActive(true);
         IsTimer = true;

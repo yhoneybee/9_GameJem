@@ -44,14 +44,14 @@ public class Chatting : MonoBehaviour
 
         if (send)
         {
-            img.color = Color.yellow;
-            //img.sprite = Me;
+            //img.color = Color.yellow;
+            img.sprite = Me;
             text.alignment = TextAlignmentOptions.Right;
         }
         else
         {
-            img.color = Color.white;
-            //img.sprite = You;
+            //img.color = Color.white;
+            img.sprite = You;
             text.alignment = TextAlignmentOptions.Left;
         }
 

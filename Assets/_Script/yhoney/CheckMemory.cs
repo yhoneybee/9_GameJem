@@ -119,7 +119,7 @@ public class CheckMemory : MonoBehaviour
                     StartCoroutine(EDelay(new System.Tuple<string, bool>[] { new System.Tuple<string, bool>(Greetings[rand][0], false), new System.Tuple<string, bool>(Greetings[rand][1], true) }));
                     break;
                 case State.QUESTION:
-                    Question(Questions[ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[0]][Random.Range(0, 3)], Choice[ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[0]]);
+                    Question(Questions[ListContainer.LC.PresentationResult[Mathf.Abs(question_count - ListContainer.LC.PresentationResult.Count)].PlaceAndActionStringArr[0]][Random.Range(0, 3)], Choice[ListContainer.LC.PresentationResult[Mathf.Abs(question_count - ListContainer.LC.PresentationResult.Count)].PlaceAndActionStringArr[0]]);
                     break;
                 case State.ANSWER:
                     break;
@@ -195,7 +195,7 @@ public class CheckMemory : MonoBehaviour
     private void Start()
     {
         State = State.GREETING;
-        question_count = Random.Range(1, 3);
+        question_count = ListContainer.LC.PresentationResult.Count;
     }
     private void Update()
     {
@@ -287,7 +287,7 @@ public class CheckMemory : MonoBehaviour
 
             //StartCoroutine(EDelay(new System.Tuple<string, bool>(Negative[rand], false)));
 
-            Chatting.MessageStack.Peek().GetComponentInChildren<TextMeshProUGUI>().text = GetString(ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[0], Choice[ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[0]][index]);
+            Chatting.MessageStack.Peek().GetComponentInChildren<TextMeshProUGUI>().text = GetString(ListContainer.LC.PresentationResult[Mathf.Abs(question_count - ListContainer.LC.PresentationResult.Count)].PlaceAndActionStringArr[0], Choice[ListContainer.LC.PresentationResult[Mathf.Abs(question_count - ListContainer.LC.PresentationResult.Count)].PlaceAndActionStringArr[0]][index]);
             State = State.ANSWER;
         }
     }

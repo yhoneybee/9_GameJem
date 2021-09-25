@@ -156,6 +156,8 @@ public class CheckMemory : MonoBehaviour
             case State.QUESTION:
                 break;
             case State.END:
+                SceneMananagementClass.SMC.LoadSceneAsSync("CheckTheAffectionScene");
+                SceneMananagementClass.SMC.UnLoadSceneAsSync("CheckMemory");
                 break;
         }
 
@@ -194,8 +196,6 @@ public class CheckMemory : MonoBehaviour
                 HideQ();
                 State = State.END;
                 // TODO : END
-                SceneMananagementClass.SMC.LoadSceneAsSync("CheckTheAffectionScene");
-                SceneMananagementClass.SMC.UnLoadSceneAsSync("CheckMemory");
             }
         }
     }

@@ -6,11 +6,11 @@ using TMPro;
 
 public class CheckMemory : MonoBehaviour
 {
-    [SerializeField] GridLayoutGroup Log;
-    [SerializeField] GridLayoutGroup Kakao;
-    [SerializeField] GameObject MessagePrefab;
+    [SerializeField] Image Log;
+    [SerializeField] TextMeshProUGUI Date;
+    [SerializeField] TextMeshProUGUI Content;
 
-    private void Start()
+    private void Update()
     {
 
     }

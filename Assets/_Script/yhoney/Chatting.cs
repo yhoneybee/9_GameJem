@@ -1,0 +1,59 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+public class Chatting : MonoBehaviour
+{
+    [SerializeField] RectTransform Content;
+    [SerializeField] Scrollbar Scrollbar;
+    [SerializeField] GameObject ChatPrefab;
+    [SerializeField] Sprite Me;
+    [SerializeField] Sprite You;
+
+    Coroutine CSetValueLerp;
+
+    void Update()
+    {
+        var glg = Content.GetComponent<GridLayoutGroup>();
+        Content.sizeDelta = new Vector2(Content.sizeDelta.x, (glg.cellSize.y + glg.spacing.y) * Content.childCount + 25);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Chat("text", true);
+        }
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Chat("TEXT", false);
+        }
+    }
+
+    public void Chat(string message, bool send)
+    {
+        var obj = Instantiate(ChatPrefab, Content);
+        var img = obj.GetComponent<Image>();
+        var text = obj.GetComponentInChildren<TextMeshProUGUI>();
+
+        obj.transform.SetParent(Content.transform, false);
+        text.text = message;
+
+        //if (send) img.sprite = Me;
+        //else img.sprite = You;
+
+        if (send)
+        {
+            img.color = Color.yellow;
+            text.alignment = TextAlignmentOptions.Right;
+        }
+        else
+        {
+            img.color = Color.white;
+            text.alignment = TextAlignmentOptions.Left;
+        }
+
+        Invoke(nameof(SetZero), 1);
+    }
+
+    void SetZero() => Scrollbar.value = 0;
+}

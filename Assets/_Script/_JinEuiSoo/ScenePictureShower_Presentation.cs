@@ -227,6 +227,8 @@ public class ScenePictureShower_Presentation : MonoBehaviour
 
         _changeThingsInfos.Clear();
 
+        ListContainer.LC.ClearPresentationResultList();
+
         SceneMananagementClass.SMC.LoadSceneAsSync("CheckMemory");
         SceneMananagementClass.SMC.UnLoadSceneAsSync("PicturePresentating");
     }

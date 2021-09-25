@@ -43,11 +43,13 @@ public class Chatting : MonoBehaviour
         if (send)
         {
             img.color = Color.yellow;
+            //img.sprite = Me;
             text.alignment = TextAlignmentOptions.Right;
         }
         else
         {
             img.color = Color.white;
+            //img.sprite = You;
             text.alignment = TextAlignmentOptions.Left;
         }
 
@@ -56,7 +58,7 @@ public class Chatting : MonoBehaviour
         var glg = Content.GetComponent<GridLayoutGroup>();
         Content.sizeDelta = new Vector2(Content.sizeDelta.x, (glg.cellSize.y + glg.spacing.y) * Content.childCount + 25);
 
-        MessageStack.Push(obj);
+        if (send) MessageStack.Push(obj);
     }
 
     public void SetZero() => Scrollbar.value = 0;

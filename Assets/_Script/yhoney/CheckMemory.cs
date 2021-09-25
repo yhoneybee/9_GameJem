@@ -134,7 +134,6 @@ public class CheckMemory : MonoBehaviour
                     Question(Questions[str][Random.Range(0, 3)], Choice[str]);
                     break;
                 case State.ANSWER:
-                    print("fdjkdf");
                     break;
                 case State.END:
                     StartCoroutine(EDelay(new System.Tuple<string, bool>[] { new System.Tuple<string, bool>(End[rand][0], false), new System.Tuple<string, bool>(End[rand][1], true) }));

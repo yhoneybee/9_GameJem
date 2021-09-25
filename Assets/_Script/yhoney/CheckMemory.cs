@@ -32,7 +32,19 @@ public class CheckMemory : MonoBehaviour
             SecRotate.rotation = Quaternion.AngleAxis(-72 * left_time, Vector3.forward);
         }
     }
-    public int QuestionCount;
+    private int question_count;
+    public int QuestionCount
+    {
+        get {  return question_count; }
+        set 
+        { 
+            question_count = value;
+            if (question_count <= 0)
+            {
+                // TODO : END
+            }
+        }
+    }
 
     private void Start()
     {
@@ -45,7 +57,7 @@ public class CheckMemory : MonoBehaviour
             LeftTime += Time.deltaTime;
             if (LeftTime > 5)
             {
-                // fail
+                // TODO : Fail
                 IsTimer = false;
             }
         }
@@ -53,19 +65,18 @@ public class CheckMemory : MonoBehaviour
 
     public void NextMemo()
     {
-        // TODO : 여기서 Presentation에 접근해서 갱신
+        // TODO : 여기서 Presentation에 접근해서 갱신 메모가 없다면 Text 비움
         int year = 2021, month = 1, day = 1;
         Date.text = $"{year} / {month} / {day}";
         Content.text = $"{month}월 {day}일 입니다~";
     }
-
     public void Question(string question, string[] answer)
     {
         QuestionText.text = question;
         for (int i = 0; i < 4; i++) Answers[i].text = answer[i];
         IsTimer = true;
+        --QuestionCount;
     }
-
     public void Answer(int index)
     {
         if (LeftTime < 5 && LeftTime != 0)

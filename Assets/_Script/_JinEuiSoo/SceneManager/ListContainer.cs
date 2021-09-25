@@ -31,8 +31,8 @@ public class ListContainer : MonoBehaviour
         }
     }
 
-    List<string> _presentationResult = new List<string>();
-    public List<string> PresentationResult => _presentationResult;
+    List<ChangeThingInfoStr> _presentationResult = new List<ChangeThingInfoStr>();
+    public List<ChangeThingInfoStr> PresentationResult => _presentationResult;
 
     private void Awake()
     {
@@ -45,5 +45,13 @@ public class ListContainer : MonoBehaviour
             return;
         }
         #endregion
+    }
+
+    public void AddPresentationResult(ChangeThingInfoStr[] results)
+    {
+        foreach(ChangeThingInfoStr tempString in results)
+        {
+            _presentationResult.Add(tempString);
+        }
     }
 }

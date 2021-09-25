@@ -209,6 +209,14 @@ public class ScenePictureShower_Presentation : MonoBehaviour
             Debug.Log($"잘못간 곳 : {thing.PlaceAndActionStringArr[1]}, 잘못된 먹은 음식 : {thing.PlaceAndActionStringArr[3]}");
         }
 
+        ChangeThingInfoStr[] tempStringResult;
+        tempStringResult = new ChangeThingInfoStr[_changeThingsInfos.Count];
+        for(int ia = 0; ia < _changeThingsInfos.Count; ia++)
+        {
+            tempStringResult[ia] = _changeThingsInfos[ia];
+        }
+
+        ListContainer.LC.AddPresentationResult(tempStringResult);
 
         _changeThingsInfos.Clear();
     }

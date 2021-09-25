@@ -172,11 +172,13 @@ public class SceneMananagementClass : MonoBehaviour
             case "PicturePresentating":
                 SoundManager.SM.RequestPlayBGM(_presentationScene.name, 77f, true);
                 ListContainer.LC.AddNumberOfDay(1);
+                SoundManager.SM.RequestPlayClip("다음날넘어갈때");
                 break;
             case "CheckMemory":
                 SoundManager.SM.RequestPlayBGM(_messageCheckingScene.name, true);
                 ListContainer.LC.AddNumberOfDay(1);
                 StartCoroutine(WaitTransitionCheckMemoryStart());
+                SoundManager.SM.RequestPlayClip("다음날넘어갈때");
                 break;
             case "CheckTheAffectionScene":
                 break;

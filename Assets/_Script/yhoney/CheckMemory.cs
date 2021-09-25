@@ -30,7 +30,7 @@ public class CheckMemory : MonoBehaviour
         { "동물카페", new string[] { "고양이","개","닭","돼지" } },
         { "꽃집", new string[] { "흰색","빨간색","노란색","파란색" } },
         { "오락실", new string[] { "유령","좀비","오크","강아지 수인" } },
-        { "악세서리점", new string[] { "십자가","불꽃","물방울","해골" } },
+        { "악세사리점", new string[] { "십자가","불꽃","물방울","해골" } },
     };
 
     Dictionary<string, string[]> Questions = new Dictionary<string, string[]>()
@@ -40,7 +40,7 @@ public class CheckMemory : MonoBehaviour
         { "동물카페", new string[] { "네가 동물을 그렇게 좋아하는 줄 몰랐어.", "동물카페에서 어제 같이 쓰다듬은 동물이 뭐였지?", "너는 동물카페에서 걔 안무서웠어?" } },
         { "꽃집", new string[] { "꽃집에서 네 옷에 나비가 앉은거 너무 신기하지 않아?", "나비가 꽃집에서 널 꽃인 줄 알았나봐", "나비는 어제 왜 너한테 앉은 걸까?" } },
         { "오락실", new string[] { "어제 진짜 게임 잘하던데, 원래 괴물 안무서워 해?", "게임하다가 울어서 깜짝 놀랬잖아 ㅎㅎ. 그렇게 무서웠어?", "게임할 때 나온 괴물 꿈에서 나오는 줄 알았잖아 ㅜㅜ" } },
-        { "악세서리점", new string[] { "액세서리 봤을 때 눈이 반짝거리던데 그게 취향이야?", "너가 엄청 자세히 보던 액세서리 나한테도 잘 어울릴까?", "어제 본 악세사리점에서 내 취향은 십자간데 너는 어땠어?" } },
+        { "악세사리점", new string[] { "액세서리 봤을 때 눈이 반짝거리던데 그게 취향이야?", "너가 엄청 자세히 보던 액세서리 나한테도 잘 어울릴까?", "어제 본 악세사리점에서 내 취향은 십자간데 너는 어땠어?" } },
     };
 
     List<string[]> Greetings = new List<string[]>()
@@ -95,7 +95,7 @@ public class CheckMemory : MonoBehaviour
             case "오락실":
                 result = $"{select}는 많이 무서웠어 ㅠ";
                 break;
-            case "악세서리점":
+            case "악세사리점":
                 result = $"{select}모양은 내 취향이었어";
                 break;
         }
@@ -126,6 +126,7 @@ public class CheckMemory : MonoBehaviour
                         break;
                     }
                     string str = ListContainer.LC.PresentationResult[q_idx].PlaceAndActionStringArr[0];
+                    print(str);
                     Question(Questions[str][Random.Range(0, 3)], Choice[str]);
                     break;
                 case State.ANSWER:
@@ -190,9 +191,11 @@ public class CheckMemory : MonoBehaviour
             question_count = value;
             if (question_count < 0)
             {
-                // TODO : END
                 HideQ();
                 State = State.END;
+                // TODO : END
+                SceneMananagementClass.SMC.LoadSceneAsSync("CheckTheAffectionScene");
+                SceneMananagementClass.SMC.UnLoadSceneAsSync("CheckMemory");
             }
         }
     }

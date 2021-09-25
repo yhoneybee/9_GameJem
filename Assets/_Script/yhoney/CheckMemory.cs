@@ -90,7 +90,7 @@ public class CheckMemory : MonoBehaviour
                 result = $"{select}는 너무 귀여웠어!";
                 break;
             case "꽃집":
-                result = $"{select}색 나비가 날 좋아하나봐";
+                result = $"{select} 나비가 날 좋아하나봐";
                 break;
             case "오락실":
                 result = $"{select}는 많이 무서웠어 ㅠ";

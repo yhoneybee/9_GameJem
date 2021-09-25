@@ -328,6 +328,36 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    internal void RequestPlayClip(string clipName, float playStartTime, Vector3 pos)
+    {
+        bool nameFindBool = false;
+        int playMusicNumberInt = 0;
+
+        for (int intA = 0; intA < _clipPackA.Length; intA++)
+        {
+            if (_clipPackA[intA].name == clipName)
+            {
+                nameFindBool = true;
+                playMusicNumberInt = intA;
+                break;
+            }
+        }
+
+        if (nameFindBool)
+        {
+            // Set Basic object pooling setting.
+            GameObject tempGameObject = GetClipFromPool();
+            tempGameObject.transform.position = pos;
+
+            // Set sound Attributions.
+            tempGameObject.GetComponent<BasicSoundClipPlay_Common>().SetInitialization(_clipPackA[playMusicNumberInt], playStartTime, false);
+        }
+        else
+        {
+            Debug.Log("Clip Request decline. Clip name " + clipName + " ins't insied of array");
+        }
+    }
+
     internal void ClipRequestReturnToPool(Transform thereSelves)
     {
         thereSelves.position = Vector3.zero;

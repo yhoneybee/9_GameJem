@@ -134,6 +134,7 @@ public class ScenePictureShower_Presentation : MonoBehaviour
         _orderOfVisiting++;
         SetBadGrilActive();
         UI_ClockStart();
+        SoundManager.SM.RequestPlayClip("»çÁøÂï´ÂÂûÄ¬", 0.25f, Vector3.zero);
     }
 
 

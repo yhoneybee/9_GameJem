@@ -464,6 +464,7 @@ MonoBehaviour:
   - {fileID: 109790000}
   - {fileID: 1715037704}
   - {fileID: 353029982}
+  _timeForPlay: 5
 --- !u!1 &1470562228
 GameObject:
   m_ObjectHideFlags: 0

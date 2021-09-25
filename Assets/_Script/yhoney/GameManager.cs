@@ -11,12 +11,12 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
-    private int affection;
+    private int affection = 100;
     public int Affection
     {
         get { return affection; }
         set
-        { 
+        {
             affection = value;
             if (value <= 0)
             {

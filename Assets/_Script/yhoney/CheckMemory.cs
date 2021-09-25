@@ -130,6 +130,7 @@ public class CheckMemory : MonoBehaviour
                     Question(Questions[str][Random.Range(0, 3)], Choice[str]);
                     break;
                 case State.ANSWER:
+                    print("fdjkdf");
                     break;
                 case State.END:
                     StartCoroutine(EDelay(new System.Tuple<string, bool>[] { new System.Tuple<string, bool>(End[rand][0], false), new System.Tuple<string, bool>(End[rand][1], true) }));
@@ -156,7 +157,7 @@ public class CheckMemory : MonoBehaviour
             case State.QUESTION:
                 break;
             case State.END:
-                print("fjkdlfd");
+                yield return new WaitForSeconds(2);
                 SceneMananagementClass.SMC.LoadSceneAsSync("CheckTheAffectionScene");
                 SceneMananagementClass.SMC.UnLoadSceneAsSync("CheckMemory");
                 break;
@@ -224,8 +225,8 @@ public class CheckMemory : MonoBehaviour
                 if (!isA)
                 {
                     Chatting.MessageStack.Peek().GetComponentInChildren<TextMeshProUGUI>().text = ".....";
-                    ++q_idx;
                     GameManager.Instance.Affection -= 10;
+                    ++q_idx;
                     StartCoroutine(EDelay(new System.Tuple<string, bool>(Negative[Random.Range(0, 4)], false)));
                 }
 
@@ -314,7 +315,6 @@ public class CheckMemory : MonoBehaviour
             else
             {
                 GameManager.Instance.Affection -= 10;
-                ++q_idx;
                 StartCoroutine(EDelay(new System.Tuple<string, bool>(Negative[rand], false)));
             }
 

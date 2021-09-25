@@ -162,20 +162,19 @@ public class SceneMananagementClass : MonoBehaviour
     {
         switch(sceneName)
         {
-            default:
             case "LobbyScene":
-                SoundManager.SM.RequestPlayBGM(_lobbyScene.name);
+                SoundManager.SM.RequestPlayBGM(_lobbyScene.name, true);
                 ListContainer.LC.SetToZeroNumberOfDay();
                 break;
             case "IngameScene":
-                SoundManager.SM.RequestPlayBGM(_ImageScene.name);
+                SoundManager.SM.RequestPlayBGM(_ImageScene.name, 64f, true);
                 break;
             case "PicturePresentating":
-                SoundManager.SM.RequestPlayBGM(_presentationScene.name);
+                SoundManager.SM.RequestPlayBGM(_presentationScene.name, 77f, true);
                 ListContainer.LC.AddNumberOfDay(1);
                 break;
             case "CheckMemory":
-                SoundManager.SM.RequestPlayBGM(_messageCheckingScene.name);
+                SoundManager.SM.RequestPlayBGM(_messageCheckingScene.name, true);
                 ListContainer.LC.AddNumberOfDay(1);
                 StartCoroutine(WaitTransitionCheckMemoryStart());
                 break;

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: "BGM_\uCE74\uD1A1\uD560\uB54C 1"
   m_EditorClassIdentifier: 
   _name: "\uCE74\uD1A1\uD560\uB54C 1"
-  _audioClip: {fileID: 8300000, guid: 194bab2f4435a954ebebc178b7c0af27, type: 3}
+  _audioClip: {fileID: 8300000, guid: 53ad59d0ce392a145baff59834cc3451, type: 3}

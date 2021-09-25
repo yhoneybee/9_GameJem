@@ -44,4 +44,21 @@ public class BasicSoundClipPlay_Common : MonoBehaviour
         ST.CurrentAudioStorage = audioStorage;
         Initialization();
     }
+
+    internal void SetInitialization(AudioStorage audioStorage, bool isLoop)
+    {
+        ST.CurrentAudioStorage = audioStorage;
+        Initialization();
+        ST.STAudioSource.loop = isLoop;
+        ST.ClipDuration = ST.CurrentAudioStorage.audioClip.length * 100;
+    }
+
+    internal void SetInitialization(AudioStorage audioStorage, float playStartTime, bool isLoop)
+    {
+        ST.CurrentAudioStorage = audioStorage;
+        Initialization();
+        ST.STAudioSource.loop = isLoop;
+        ST.ClipDuration = ST.CurrentAudioStorage.audioClip.length * 100;
+        ST.STAudioSource.time = playStartTime;
+    }
 }

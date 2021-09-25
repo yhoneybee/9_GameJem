@@ -170,36 +170,97 @@ public class SoundManager : MonoBehaviour
             {
                 ClipRequestReturnToPool(tempTransformFindPlayingChild);
             }
-            while(false)
+        }
+        else
+        {
+            Debug.Log("BGM Request decline. BGM name " + BGMName + " ins't insied of array");
+        }
+    }
+
+    public void RequestPlayBGM(string BGMName, bool isLoop)
+    {
+        bool nameFindBool = false;
+        int playMusicNumberInt = 0;
+        for (int intA = 0; intA < _BGMS.Length; intA++)
+        {
+            if (_BGMS[intA].name == BGMName)
             {
-                try
-                {
-                    GameObject whilePlayObject = _BGMPool.transform.Find(BGMName).gameObject;
-                }
-                catch (NullReferenceException)
-                {
-                    GameObject tempGameObjecta = GetBGMFromPool();
-                    tempGameObjecta.SetActive(true);
-                    tempGameObjecta.GetComponent<BasicSoundClipPlay_Common>().SetInitialization(_BGMS[playMusicNumberInt]);
-                }
+                nameFindBool = true;
+                playMusicNumberInt = intA;
+            }
+        }
 
-                // BGM 중복 실행 방지를 위한 코드. 재생할 BGM 외에 나머지는 찾아 리턴한다.
-                {
-                    Transform tempBGMtrans;
-                    for (int i = 0; i < _BGMS.Length; i++)
-                    {
-                        // 찾으려는 BGM이름이 현재 재생중인 BGM 이름과 같다면 for문에서 빠져나온다.
-                        if (_BGMS[i].name == BGMName)
-                            break;
+        if (nameFindBool)
+        {
+            Transform tempTransformFindPlayingChild = null;
+            bool tempIsTransformFind = false;
 
-                        // BGM 이름이 현재 재생할 BGM이 아니라면 찾아서 파괴한다.
-                        tempBGMtrans = _BGMPool.transform.Find(_BGMS[playMusicNumberInt].name);
-                        if (tempBGMtrans != null)
-                        {
-                            ClipRequestReturnToPool(tempBGMtrans);
-                        }
-                    }
+            // 현재 재생중인 BGM이 있는지 확인한다.
+            foreach (Transform target in _BGMPool.GetComponentInChildren<Transform>())
+            {
+                if (target.gameObject.activeSelf)
+                {
+                    tempTransformFindPlayingChild = target;
+                    tempIsTransformFind = true;
+                    break;
                 }
+            }
+
+            // 현재 BGM을 실행시킨다. + Looping 기능도 들어간다.
+            GameObject tempGameObject = GetBGMFromPool();
+            tempGameObject.SetActive(true);
+            tempGameObject.GetComponent<BasicSoundClipPlay_Common>().SetInitialization(_BGMS[playMusicNumberInt], isLoop);
+
+            // 재생중인 BGM이 있다면, 그 BGM을 종료시키고, 다른 BGM을 실행하기 위해, 그 BGM을 리턴시킨다.
+            if (tempIsTransformFind == true)
+            {
+                ClipRequestReturnToPool(tempTransformFindPlayingChild);
+            }
+        }
+        else
+        {
+            Debug.Log("BGM Request decline. BGM name " + BGMName + " ins't insied of array");
+        }
+    }
+
+    public void RequestPlayBGM(string BGMName, float playStartTime , bool isLoop)
+    {
+        bool nameFindBool = false;
+        int playMusicNumberInt = 0;
+        for (int intA = 0; intA < _BGMS.Length; intA++)
+        {
+            if (_BGMS[intA].name == BGMName)
+            {
+                nameFindBool = true;
+                playMusicNumberInt = intA;
+            }
+        }
+
+        if (nameFindBool)
+        {
+            Transform tempTransformFindPlayingChild = null;
+            bool tempIsTransformFind = false;
+
+            // 현재 재생중인 BGM이 있는지 확인한다.
+            foreach (Transform target in _BGMPool.GetComponentInChildren<Transform>())
+            {
+                if (target.gameObject.activeSelf)
+                {
+                    tempTransformFindPlayingChild = target;
+                    tempIsTransformFind = true;
+                    break;
+                }
+            }
+
+            // 현재 BGM을 실행시킨다. + Looping 기능도 들어간다.
+            GameObject tempGameObject = GetBGMFromPool();
+            tempGameObject.SetActive(true);
+            tempGameObject.GetComponent<BasicSoundClipPlay_Common>().SetInitialization(_BGMS[playMusicNumberInt], playStartTime, isLoop);
+
+            // 재생중인 BGM이 있다면, 그 BGM을 종료시키고, 다른 BGM을 실행하기 위해, 그 BGM을 리턴시킨다.
+            if (tempIsTransformFind == true)
+            {
+                ClipRequestReturnToPool(tempTransformFindPlayingChild);
             }
         }
         else

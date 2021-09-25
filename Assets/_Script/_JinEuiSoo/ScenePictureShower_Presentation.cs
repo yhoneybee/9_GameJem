@@ -10,6 +10,7 @@ public class ScenePictureShower_Presentation : MonoBehaviour
     public List<ChangeThingInfoStr> ChangeThingsInfos => _changeThingsInfos;
 
     [SerializeField] bool _test;
+    [SerializeField] string _testBGM;
     [SerializeField] float _datingTime = 6f;
     
     #region Modifie area
@@ -59,7 +60,8 @@ public class ScenePictureShower_Presentation : MonoBehaviour
         if(_test)
         {
             _test = false;
-            PicturePresentationTestStart(_datingTime);
+            SoundManager.SM.RequestPlayBGM(_testBGM);
+            // PicturePresentationTestStart(_datingTime);
         }
         TimeCheckings();
     }
@@ -219,6 +221,9 @@ public class ScenePictureShower_Presentation : MonoBehaviour
         ListContainer.LC.AddPresentationResult(tempStringResult);
 
         _changeThingsInfos.Clear();
+
+        SceneMananagementClass.SMC.LoadSceneAsSync("CheckMemory");
+        SceneMananagementClass.SMC.UnLoadSceneAsSync("PicturePresentating");
     }
 
 

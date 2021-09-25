@@ -71,7 +71,7 @@ public class CheckMemory : MonoBehaviour
     {
         new string[] { "잘자고 내일봐", "내 꿈꿔~" },
         new string[] { "다음 데이트 기대된다", "나도 기대되!" },
-        new string[] { "먼저 자 ㅋㅋㅋ", "잠이 잘 안...ㅇ..ㅘ" },
+        new string[] { "먼저 자 ㅋㅋㅋ", "잠이 잘 안...ㅇ..ㅘ zzZ" },
         new string[] { "내 꿈꿔", "ㅇㅁㅇ ㄱ..그랭ㅎ" },
     };
 
@@ -174,7 +174,7 @@ public class CheckMemory : MonoBehaviour
             SecRotate.rotation = Quaternion.AngleAxis(-72 * left_time, Vector3.forward);
         }
     }
-    private int question_count = 5;
+    private int question_count = 0;
     public int QuestionCount
     {
         get { return question_count; }
@@ -190,9 +190,12 @@ public class CheckMemory : MonoBehaviour
         }
     }
 
+    int memo_idx = 0;
+
     private void Start()
     {
         State = State.GREETING;
+        question_count = Random.Range(1, 3);
     }
     private void Update()
     {
@@ -213,9 +216,40 @@ public class CheckMemory : MonoBehaviour
     {
         // TODO : 여기서 Presentation에 접근해서 갱신 메모가 없다면 Text 비움
 
+        bool check = ListContainer.LC.PresentationResult[memo_idx].IsModifedByBadGirl;
+        string visit = ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[check ? 2 : 0];
+        string action = ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[check ? 3 : 1];
+
         int year = 2021, month = 1, day = 1;
         Date.text = $"{year} / {month} / {day}";
-        Content.text = $"{month}월 {day}일 입니다~";
+
+        string memo = $"{visit}에서 {action}";
+
+        switch (visit)
+        {
+            case "영화관":
+                memo += "를 골랐다";
+                break;
+            case "레스토랑":
+                memo += "를 먹었다";
+                break;
+            case "동물카페":
+                memo += "를 만졌다";
+                break;
+            case "꽃집":
+                memo += "옷 위 로 나비가 날아왔다";
+                break;
+            case "오락실":
+                memo += "를 때려 잡았다";
+                break;
+            case "악세사리점":
+                memo += "모양 목걸이를 구경했다";
+                break;
+        }
+
+        Content.text = memo;
+
+        ++memo_idx;
     }
     public void Question(string question, string[] answer)
     {
@@ -243,8 +277,15 @@ public class CheckMemory : MonoBehaviour
 
             int rand = Random.Range(0, 4);
 
-            StartCoroutine(EDelay(new System.Tuple<string, bool>(Negative[rand], false)));
-            //StartCoroutine(EDelay(new System.Tuple<string, bool>(Positive[rand], false)));
+            string visit = ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[0];
+            string action = ListContainer.LC.PresentationResult[memo_idx].PlaceAndActionStringArr[1];
+
+            if (Choice[visit][index] == action)
+                StartCoroutine(EDelay(new System.Tuple<string, bool>(Positive[rand], false)));
+            else
+                StartCoroutine(EDelay(new System.Tuple<string, bool>(Negative[rand], false)));
+
+            //StartCoroutine(EDelay(new System.Tuple<string, bool>(Negative[rand], false)));
 
             Chatting.MessageStack.Peek().GetComponentInChildren<TextMeshProUGUI>().text = GetString("영화관", Choice["영화관"][index]);
             State = State.ANSWER;

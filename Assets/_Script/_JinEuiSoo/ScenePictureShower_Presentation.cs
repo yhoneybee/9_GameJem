@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class ScenePictureShower_Presentation : MonoBehaviour
@@ -8,20 +9,140 @@ public class ScenePictureShower_Presentation : MonoBehaviour
     [SerializeField] List<ChangeThingInfoStr> _changeThingsInfos = new List<ChangeThingInfoStr>();
     public List<ChangeThingInfoStr> ChangeThingsInfos => _changeThingsInfos;
 
-    [SerializeField] int _aDayForVisitingPlace;
+    [SerializeField] bool _test;
+    [SerializeField] float _datingTime = 6f;
+    
+    #region Modifie area
+    [Header("Modifie Area")]
+    [SerializeField] int _visitingPlaceInADay = 3;
+
+    [SerializeField] GameObject[] _picturePrefabs;
+    [SerializeField] string[] _placeNames;
+    public string[] PlaceNames => _placeNames;
+
+    #endregion
+
+    [Header("UIs")]
+    #region UI Control
+
+    [SerializeField] GameObject _UI_clock;
+
+    #endregion
+
+    #region Don't Modifie area
+    [Header("Debug Area. Do not modife")]
+    [SerializeField] bool _innerTimeForAllPictureTimeDecreasing;
+    [SerializeField] bool _innerTimeForAnPictureTimeDecreasing;
+
     [SerializeField] float _origineTime = 24f;
+    [SerializeField] float _pictureShowingTime = 8f;
     [SerializeField] float _innerTimeForAllPicture = 0f;
     [SerializeField] float _innerTimeForAnPicture = 0f;
 
-    [SerializeField] GameObject[] _pictures;
+    [SerializeField] int _currentDay = 0;
+    [SerializeField] int _orderOfVisiting = 0;
+    public int OrderOfVisiting => _orderOfVisiting;
+
+    [SerializeField] bool _isBadGirlActive;
+    public bool IsBadGirlActive => _isBadGirlActive;
+
+    [SerializeField] float _badGirlActiveChance;
+
+    [SerializeField] GameObject _anPicture;
+    #endregion
 
 
-    #region Methoud
+
+
+    private void FixedUpdate()
+    {
+        if(_test)
+        {
+            _test = false;
+            PicturePresentationTestStart(_datingTime);
+        }
+        TimeCheckings();
+    }
+
+    void TimeCheckings()
+    {
+        if (_innerTimeForAllPictureTimeDecreasing == true)
+        {
+            _innerTimeForAllPicture -= Time.deltaTime;
+            CheckPicturePresentingTimeDone();
+        }
+
+        if (_innerTimeForAnPictureTimeDecreasing == true)
+        {
+            _innerTimeForAnPicture -= Time.deltaTime;
+            CheckInnerTimeAnPicture();
+        }
+    }
+
+
+    #region Functions For presentation
+
+    public void SetDifficultyByAnotherClass(SCO_DifficultControlOption difficultOption)
+    {
+        _datingTime = difficultOption.ATimeForDate;
+        _visitingPlaceInADay = difficultOption.VisitingPlacesForDate;
+        _badGirlActiveChance = difficultOption.ChanceForBadGirlActive;
+    }
+
+    public void PicturePresentationStart()
+    {
+        _origineTime = _datingTime;
+        PictureShowingEventFirstStart();
+    }
+
+    public void PicturePresentationTestStart(float datingTime)
+    {
+        _origineTime = datingTime;
+        PictureShowingEventFirstStart();
+    }
+
+    // First Action
+    void PictureShowingEventFirstStart()
+    {
+        // Initialize for Presentation
+        _orderOfVisiting = 0;
+        _pictureShowingTime = _origineTime / _visitingPlaceInADay;
+
+
+        _innerTimeForAllPicture = _origineTime;
+        _innerTimeForAnPicture = _pictureShowingTime;
+        _innerTimeForAllPictureTimeDecreasing = true;
+        _innerTimeForAnPictureTimeDecreasing = true;
+
+
+        PresentationShowing();
+        UI_ClockTimerStart();
+    }
+    
 
     // Show An Picture
     void PresentationShowing()
     {
-        Instantiate(_pictures[Random.Range(0, _pictures.Length)]);
+        _anPicture = Instantiate(_picturePrefabs[UnityEngine.Random.Range(0, _picturePrefabs.Length)]);
+        _orderOfVisiting++;
+        SetBadGrilActive();
+        UI_ClockStart();
+    }
+
+
+    void SetBadGrilActive()
+    {
+        float tempFloatRandomCount = UnityEngine.Random.Range(0f, 1f);
+        Debug.Log("tempfloatRandomCount : " + tempFloatRandomCount);
+        if (tempFloatRandomCount <= _badGirlActiveChance)
+        {
+            _isBadGirlActive = true;
+        }
+        else
+        {
+            _isBadGirlActive = false;
+        }
+
     }
 
     // Set The Picture for change Things
@@ -30,22 +151,88 @@ public class ScenePictureShower_Presentation : MonoBehaviour
     // get the ChangeThingsInfo
     // do that in Picture.
 
-    // Check the Time
-
 
     // If the time isn't yet, Wait.
+    void CheckInnerTimeAnPicture()
+    {
+        if(_innerTimeForAnPicture <= 0f)
+        {
+            _innerTimeForAnPictureTimeDecreasing = false;
+            Destroy(_anPicture);
+            UI_ClockClose();
+            PictureShowingEventRestart();
+        }
+    }
 
 
     // If the time done, Show An Picture
+    void PictureShowingEventRestart()
+    {
+        _innerTimeForAnPicture = _pictureShowingTime;
+        _innerTimeForAnPictureTimeDecreasing = true;
+        PresentationShowing();
+    }
 
 
-    // If the time for 
+    // If the time for day done, Send Log.
+    void CheckPicturePresentingTimeDone()
+    {
+        if(_innerTimeForAllPicture <= 0f)
+        {
+            DonePicturePresentingTime();
+        }
+    }
 
+    void DonePicturePresentingTime()
+    {
+        _innerTimeForAllPictureTimeDecreasing = false;
+        _innerTimeForAnPictureTimeDecreasing = false;
+        _innerTimeForAllPicture = 0f;
+        _innerTimeForAnPicture = 0f;
+
+        try
+        {
+            Destroy(_anPicture);
+        }
+        catch(NullReferenceException)
+        {
+            Debug.Log("Picture already gone");
+        }
+
+
+        Debug.Log("Presenting Time be done");
+
+        foreach(ChangeThingInfoStr thing in _changeThingsInfos)
+        {
+            Debug.Log($"나쁜년이 활동 했나요? : {((thing.IsModifedByBadGirl) ? true : false)}");
+            Debug.Log($"실제간곳 : {thing.PlaceAndActionStringArr[0]}, 실제먹은음식 : {thing.PlaceAndActionStringArr[2]}");
+            Debug.Log($"잘못간 곳 : {thing.PlaceAndActionStringArr[1]}, 잘못된 먹은 음식 : {thing.PlaceAndActionStringArr[3]}");
+        }
+
+        _changeThingsInfos.Clear();
+    }
 
 
     #endregion
 
+    #region UI_ClockControl
 
+    void UI_ClockStart()
+    {
+        _UI_clock.GetComponent<UI_ScenePresentationClock>().SetClockTimeAndStart(_pictureShowingTime);
+    }
+
+    void UI_ClockClose()
+    {
+        _UI_clock.GetComponent<UI_ScenePresentationClock>().SetClockStopAndInitialize();
+    }
+
+    void UI_ClockTimerStart()
+    {
+        _UI_clock.GetComponent<UI_ScenePresentationClock>().SetTimerAndStart(_origineTime);
+    }
+
+    #endregion
 
     #region Interfaces
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public struct ChangeThingInfoStr
 {
     public int NumberOfDay;
-    public int NumberOfVisitingPlace;
+    public int OrderOfVisitingPlace;
     public bool IsModifedByBadGirl;
     public string[] PlaceAndActionStringArr;
 }

@@ -10,6 +10,7 @@ public class CheckMemory : MonoBehaviour
     [SerializeField] TextMeshProUGUI Content;
     [SerializeField] TextMeshProUGUI[] Answers;
     [SerializeField] TextMeshProUGUI QuestionText;
+    [SerializeField] RectTransform SecRotate;
 
     private bool is_timer;
     public bool IsTimer
@@ -18,20 +19,34 @@ public class CheckMemory : MonoBehaviour
         set 
         { 
             is_timer = value;
-            time = 0;
+            left_time = 0;
         }
     }
+    private float left_time;
+    public float LeftTime
+    {
+        get {  return left_time; }
+        set
+        {
+            left_time = value;
+            SecRotate.rotation = Quaternion.AngleAxis(-72 * left_time, Vector3.forward);
+        }
+    }
+    public int QuestionCount;
 
-    float time;
-
+    private void Start()
+    {
+        IsTimer = true;
+    }
     private void Update()
     {
         if (IsTimer)
         {
-            time += Time.deltaTime;
-            if (time > 5)
+            LeftTime += Time.deltaTime;
+            if (LeftTime > 5)
             {
                 // fail
+                IsTimer = false;
             }
         }
     }
@@ -48,15 +63,15 @@ public class CheckMemory : MonoBehaviour
     {
         QuestionText.text = question;
         for (int i = 0; i < 4; i++) Answers[i].text = answer[i];
+        IsTimer = true;
     }
 
     public void Answer(int index)
     {
-        if (time < 5)
+        if (LeftTime < 5 && LeftTime != 0)
         {
             // TODO : Presentation에 접근해서 bool이 true라면(바뀌었다면)
-            // 홀수 정답
-            // 아니라면 짝수 정답
+            // 홀수 정답 아니라면 짝수 정답
         }
     }
 }

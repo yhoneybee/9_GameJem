@@ -8,9 +8,8 @@ public class Chatting : MonoBehaviour
 {
     public RectTransform Content;
     [SerializeField] Scrollbar Scrollbar;
-    [SerializeField] GameObject ChatPrefab;
-    [SerializeField] Sprite Me;
-    [SerializeField] Sprite You;
+    [SerializeField] GameObject YouChatPrefab;
+    [SerializeField] GameObject MeChatPrefab;
 
     Coroutine CSetValueLerp;
 
@@ -30,35 +29,30 @@ public class Chatting : MonoBehaviour
 
     public void Chat(string message, bool send)
     {
-        var obj = Instantiate(ChatPrefab, Content);
-        var img = obj.GetComponent<Image>();
-        var text = obj.GetComponentInChildren<TextMeshProUGUI>();
-
-        obj.transform.SetParent(Content.transform, false);
-        text.text = message;
-
-        //if (send) img.sprite = Me;
-        //else img.sprite = You;
-
-        SoundManager.SM.RequestPlayClip("墨佩家府");
+        GameObject obj = null;
 
         if (send)
         {
-            //img.color = Color.yellow;
-            img.sprite = Me;
-            text.alignment = TextAlignmentOptions.Right;
+            obj = Instantiate(MeChatPrefab, Content);
+            obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(-20, 0);
         }
         else
         {
-            //img.color = Color.white;
-            img.sprite = You;
-            text.alignment = TextAlignmentOptions.Left;
+            obj = Instantiate(YouChatPrefab, Content);
+            obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(20, 0);
         }
+
+        var text = obj.GetComponentInChildren<TextMeshProUGUI>();
+
+        Content.GetComponent<MyCustomGroup>().AddChild(obj.GetComponent<RectTransform>());
+        text.text = message;
+
+        SoundManager.SM.RequestPlayClip("墨佩家府");
 
         SetZero();
 
-        var glg = Content.GetComponent<GridLayoutGroup>();
-        Content.sizeDelta = new Vector2(Content.sizeDelta.x, (glg.cellSize.y + glg.spacing.y) * Content.childCount + 25);
+        //var glg = Content.GetComponent<GridLayoutGroup>();
+        //Content.sizeDelta = new Vector2(Content.sizeDelta.x, (glg.cellSize.y + glg.spacing.y) * Content.childCount + 25);
 
         if (send) MessageStack.Push(obj);
     }

@@ -1287,21 +1287,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1017539827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Script: {fileID: 11500000, guid: c864d4428b4e81241ba0a31b78641188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 25
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 960, y: 150}
-  m_Spacing: {x: 0, y: 25}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  Rects: []
+  start_y: 450
+  spacing_y: 25
 --- !u!1 &1112253947
 GameObject:
   m_ObjectHideFlags: 0
@@ -2136,9 +2127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Content: {fileID: 1017539828}
   Scrollbar: {fileID: 1469183124}
-  ChatPrefab: {fileID: 2667501667404847832, guid: 70bb7e5c2d1f748488e698439aec21c4, type: 3}
-  Me: {fileID: 8299845756400788833, guid: 760404a9f560dca47a58f9d78e366944, type: 3}
-  You: {fileID: 1531657604765081451, guid: 760404a9f560dca47a58f9d78e366944, type: 3}
+  YouChatPrefab: {fileID: 2667501667404847832, guid: 70bb7e5c2d1f748488e698439aec21c4, type: 3}
+  MeChatPrefab: {fileID: 2667501667404847832, guid: 6e55a6db2f00f234bb874b2b658828bf, type: 3}
 --- !u!1 &1751411958
 GameObject:
   m_ObjectHideFlags: 0

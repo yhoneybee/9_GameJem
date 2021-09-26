@@ -8,11 +8,11 @@ public class SCO_DifficultControlOption : ScriptableObject
 {
     [Range(0f, 1f)]
     [SerializeField] float _chanceForBadGirlActive = 0.25f;
-    [Range(10f, 24f)]
+    [Range(10f, 30f)]
     [SerializeField] float _aTimeForDate = 24f;
     [Range(0f, 14f)]
     [SerializeField] float _aTimeForDateRandomRange = 0f;
-    [Range(3, 6)]
+    [Range(3, 10)]
     [SerializeField] int _visitingPlacesForDate = 3;
     [Range(0, 3)]
     [SerializeField] int _visitingPlacesForDateRandomRange = 0;
@@ -30,7 +30,7 @@ public class SCO_DifficultControlOption : ScriptableObject
                 Random.Range(_aTimeForDate - _aTimeForDateRandomRange,
                              _aTimeForDate + _aTimeForDateRandomRange);
 
-            return Mathf.Clamp(tempfloatATimeForDate, 10f, 24f);
+            return Mathf.Clamp(tempfloatATimeForDate, 10f, 30f);
         }
     }
 
@@ -44,7 +44,7 @@ public class SCO_DifficultControlOption : ScriptableObject
                 Random.Range(_visitingPlacesForDate - _visitingPlacesForDateRandomRange,
                              _visitingPlacesForDate + _visitingPlacesForDateRandomRange);
 
-            return Mathf.Clamp(tempIntVisitingPlacesNumber, 3, 6);
+            return Mathf.Clamp(tempIntVisitingPlacesNumber, 3, 10);
         }
     }
 }

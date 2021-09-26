@@ -15,5 +15,5 @@ MonoBehaviour:
   _chanceForBadGirlActive: 0.5
   _aTimeForDate: 10
   _aTimeForDateRandomRange: 0
-  _visitingPlacesForDate: 3
+  _visitingPlacesForDate: 8
   _visitingPlacesForDateRandomRange: 0

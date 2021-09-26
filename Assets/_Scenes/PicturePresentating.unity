@@ -696,7 +696,14 @@ MonoBehaviour:
   _test: 1
   _presentationGo: {fileID: 1283977}
   _difficulty: 0
+  _todayNumber: 0
   _difficultyOption:
+  - {fileID: 11400000, guid: 5108aa4a35c7c6f4289fda9d8a633fa0, type: 2}
+  - {fileID: 11400000, guid: 3fba064176cd49344b026918a9781de4, type: 2}
+  - {fileID: 11400000, guid: 5108aa4a35c7c6f4289fda9d8a633fa0, type: 2}
+  - {fileID: 11400000, guid: 5108aa4a35c7c6f4289fda9d8a633fa0, type: 2}
+  - {fileID: 11400000, guid: 5108aa4a35c7c6f4289fda9d8a633fa0, type: 2}
+  - {fileID: 11400000, guid: 5108aa4a35c7c6f4289fda9d8a633fa0, type: 2}
   - {fileID: 11400000, guid: 5108aa4a35c7c6f4289fda9d8a633fa0, type: 2}
   _timeWaitForTransition: 1
 --- !u!4 &755494882

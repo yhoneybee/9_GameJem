@@ -53,6 +53,7 @@ public class BasicSoundClipPlay_Common : MonoBehaviour
         {
             ST.STAudioSource.loop = isLoop;
             ST.ClipDuration = ST.CurrentAudioStorage.audioClip.length * 100;
+            ST.RemainTime = ST.CurrentAudioStorage.audioClip.length * 100;
         }
     }
 
@@ -64,6 +65,7 @@ public class BasicSoundClipPlay_Common : MonoBehaviour
         { 
             ST.STAudioSource.loop = isLoop;
             ST.ClipDuration = ST.CurrentAudioStorage.audioClip.length * 100;
+            ST.RemainTime = ST.CurrentAudioStorage.audioClip.length * 100;
         }
         ST.STAudioSource.time = playStartTime;
     }

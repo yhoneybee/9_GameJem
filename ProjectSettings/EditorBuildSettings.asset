@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/CheckTheAffectionScene.unity
     guid: 3c2bbb6cd5073b34dbd7a0b0942b1e17
+  - enabled: 1
+    path: Assets/_Scenes/EndingScene.unity
+    guid: 87e44df28ed66314784949a44c8cce8c
   m_configObjects: {}

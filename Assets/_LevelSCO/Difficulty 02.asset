@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34a15232e2c1b9644b1a6f29181726c0, type: 3}
   m_Name: Difficulty 02
   m_EditorClassIdentifier: 
-  _chanceForBadGirlActive: 0.8
+  _chanceForBadGirlActive: 0.251
+  _aTimeForDate: 24
+  _aTimeForDateRandomRange: 0
+  _visitingPlacesForDate: 3
+  _visitingPlacesForDateRandomRange: 0

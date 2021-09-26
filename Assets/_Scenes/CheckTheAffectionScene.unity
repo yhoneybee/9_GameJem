@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _loadLoopScene: PicturePresentating
-  _maximumDays: 6
+  _maximumDays: 8
   _affectionMinimum: 30
   _affectionMidle: 70
   _isSceneLoadStart: 0

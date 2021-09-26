@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34a15232e2c1b9644b1a6f29181726c0, type: 3}
-  m_Name: Difficulty 01
+  m_Name: Difficulty 03
   m_EditorClassIdentifier: 
-  _chanceForBadGirlActive: 0
-  _aTimeForDate: 20
-  _aTimeForDateRandomRange: 3
-  _visitingPlacesForDate: 5
-  _visitingPlacesForDateRandomRange: 0
+  _chanceForBadGirlActive: 0.375
+  _aTimeForDate: 14
+  _aTimeForDateRandomRange: 2
+  _visitingPlacesForDate: 9
+  _visitingPlacesForDateRandomRange: 1

@@ -20,25 +20,25 @@ public class PresentationDifficultySettingAndStart : MonoBehaviour
         _todayNumber = ListContainer.LC.GetNumberOfDay();
         switch(_todayNumber)
         {
-            case 1:
+            case 0:
                 _difficulty = 0;
             break;
-            case 3:
+            case 2:
                 _difficulty = 1;
             break;
-            case 5:
+            case 4:
                 _difficulty = 2;
             break;
-            case 7:
+            case 6:
                 _difficulty = 3;
             break;
-            case 9:
+            case 8:
                 _difficulty = 4;
             break;
-            case 11:
+            case 10:
                 _difficulty = 5;
             break;
-            case 13:
+            case 12:
                 _difficulty = 6;
             break;
         }

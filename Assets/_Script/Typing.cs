@@ -6,7 +6,17 @@ using TMPro;
 
 public class Typing : MonoBehaviour
 {
-    IEnumerator ETMPTyping(TextMeshProUGUI text, string str, float time = 0.01f)
+    [SerializeField] TextMeshPro _textMesh;
+    [Multiline]
+    [SerializeField] string _text;
+    [SerializeField] float _timeForShowText = 0.05f;
+
+    private void Start()
+    {
+        StartCoroutine(ETMPTyping(_textMesh, _text, _timeForShowText));
+    }
+
+    IEnumerator ETMPTyping(TextMeshPro text, string str, float time = 0.01f)
     {
         for (int i = 0; i < str.Length; i++)
         {

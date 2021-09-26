@@ -23,6 +23,14 @@ public class CutScene : MonoBehaviour
         if (index < ImageList.Count)
         {
             ImageList[index].SetActive(true);
+            try
+            {
+                ImageList[index-1].SetActive(false);
+            }
+            catch
+            {
+
+            }
             index++;
         }
         else
